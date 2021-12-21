@@ -5,7 +5,7 @@ const initialState = {
 export const todosReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case "TODOS_ADD_TODO":
-      return { ...state, ...payload };
+      return { ...state, todos: [payload, ...state.todos] };
     case "TODOS_DELETE_TODO":
       return { ...state, ...payload };
     case "TODOS_EDIT_TODO":

@@ -1,23 +1,22 @@
-export const addTodo = (payload) => ({
-  type: "TODOS_ADD_TODO",
-  payload,
-});
-
-export const deleteTodo = (payload) => ({
+export const addTodo = (todo) => {
+  return async (dispatch) => {
+    dispatch({ type: "TODOS_ADD_TODO", payload: todo });
+  };
+};
+export const deleteTodo = (id) => ({
   type: "TODOS_DELETE_TODO",
-  payload,
+  payload: id,
 });
 
-export const editTodo = (payload) => ({
+export const editTodo = (todo) => ({
   type: "TODOS_EDIT_TODO",
-  payload,
+  payload: todo,
 });
 
-export const deleteAllTodos = (payload) => ({
+export const deleteAllTodos = () => ({
   type: "TODOS_DELETE_ALL",
-  payload,
 });
-export const checkTodo = (payload) => ({
+export const checkTodo = (id) => ({
   type: "TODOS_CHECK_TODO",
-  payload,
+  payload: id,
 });
