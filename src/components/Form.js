@@ -8,7 +8,8 @@ const Form = ({ addTodo }) => {
     <div>
       <form
         onSubmit={(event) => {
-          addTodo({ title: input });
+          addTodo({ title: input, isCompleted: false });
+          setInput("");
           event.preventDefault();
         }}
       >

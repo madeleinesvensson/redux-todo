@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getTodos } from "reducers/todo.reducer";
+import CheckTodo from "./CheckTodo";
+import DeleteTodo from "./DeleteTodo";
 
 const TodoList = ({ todos, hasNoTodos }) => {
   console.log(todos);
@@ -12,7 +14,11 @@ const TodoList = ({ todos, hasNoTodos }) => {
       ) : (
         <div>
           {todos.map((todo, index) => (
-            <p key={todo + index}>{todo.title}</p>
+            <>
+              <p key={todo + index}>{todo.title}</p>
+              <DeleteTodo id={todo.id} />
+              <CheckTodo id={todo.id} />
+            </>
           ))}
         </div>
       )}
