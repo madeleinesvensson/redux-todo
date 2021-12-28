@@ -13,13 +13,17 @@ const TodoList = ({ todos, hasNoTodos }) => {
         <h1>No todos</h1>
       ) : (
         <div>
-          {todos.map((todo, index) => (
-            <>
-              <p key={todo + index}>{todo.title}</p>
-              <DeleteTodo id={todo.id} />
-              <CheckTodo id={todo.id} />
-            </>
-          ))}
+          {todos.map(
+            (todo, index) =>
+              console.log(todo) || (
+                <div key={todo.id}>
+                  <p>{todo.category}</p>
+                  <p key={todo + index}>{todo.title}</p>
+                  <DeleteTodo id={todo.id} />
+                  <CheckTodo id={todo.id} complete={todo.isCompleted} />
+                </div>
+              )
+          )}
         </div>
       )}
     </div>

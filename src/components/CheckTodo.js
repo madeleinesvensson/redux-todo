@@ -2,18 +2,18 @@ import React from "react";
 import { connect, useDispatch } from "react-redux";
 import { checkTodo } from "actions/todo.actions";
 
-const CheckTodo = ({ id, checkTodo }) => {
+const CheckTodo = ({ id, checkTodo, complete }) => {
   const dispatch = useDispatch();
   return (
     <div>
-      <a
-        onClick={(e) => {
-          e.preventDefault();
+      <input
+        key={id}
+        type="checkbox"
+        checked={complete}
+        onClick={() => {
           checkTodo(id);
         }}
-      >
-        check TODO
-      </a>
+      />
     </div>
   );
 };

@@ -1,15 +1,27 @@
 import React, { useState } from "react";
 import { addTodo } from "actions/todo.actions";
 import { connect } from "react-redux";
+import { SubmitButton } from "./SubmitButton";
 
 const Form = ({ addTodo }) => {
   const [input, setInput] = useState("");
+  const [categoryInput, setCategoryInput] = useState("");
+  const handleSubmit = (event) => {
+    setInput("");
+    setCategoryInput("");
+    event.preventDefault();
+  };
   return (
     <div>
       <form
         onSubmit={(event) => {
-          addTodo({ title: input, isCompleted: false });
+          addTodo({
+            title: input,
+            isCompleted: false,
+            category: categoryInput,
+          });
           setInput("");
+          setCategoryInput("");
           event.preventDefault();
         }}
       >
@@ -17,7 +29,21 @@ const Form = ({ addTodo }) => {
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
-        ></input>
+        />
+
+        <select
+          value={categoryInput}
+          onChange={(event) => setCategoryInput(event.target.value)}
+        >
+          <option hidden>Category</option>
+          <option value="Important">Important</option>
+          <option value="School">School</option>
+          <option value="Home">Home</option>
+          <option value="Work">Work</option>
+          <option value="Buy">Buy</option>
+          <option value="Pay">Pay</option>
+        </select>
+        <SubmitButton onClick={() => handleSubmit()} />
       </form>
     </div>
   );
