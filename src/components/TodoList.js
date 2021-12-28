@@ -16,7 +16,7 @@ const TodoList = ({ todos, hasNoTodos }) => {
         <div>
           {todos.map((todo, index) => (
             <div key={todo.id}>
-              <p>{dayjs().format("DD/MM/YYYY")}</p>
+              <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
               <p>{todo.category}</p>
               <p key={todo + index}>{todo.title}</p>
               <DeleteTodo id={todo.id} />

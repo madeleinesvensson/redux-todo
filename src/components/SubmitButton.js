@@ -1,5 +1,10 @@
 import React from "react";
+import { Button } from "theme-ui";
 
 export const SubmitButton = () => {
-  return <button type="submit">+</button>;
+  return (
+    <Button type="submit" variant="primary">
+      +
+    </Button>
+  );
 };
