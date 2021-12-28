@@ -10,7 +10,7 @@ const CheckTodo = ({ id, checkTodo, complete }) => {
         key={id}
         type="checkbox"
         checked={complete}
-        onClick={() => {
+        onChange={() => {
           checkTodo(id);
         }}
       />

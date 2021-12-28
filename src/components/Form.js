@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addTodo } from "actions/todo.actions";
 import { connect } from "react-redux";
 import { SubmitButton } from "./SubmitButton";
+import dayjs from "dayjs";
 
 const Form = ({ addTodo }) => {
   const [input, setInput] = useState("");
@@ -19,6 +20,7 @@ const Form = ({ addTodo }) => {
             title: input,
             isCompleted: false,
             category: categoryInput,
+            time: dayjs(),
           });
           setInput("");
           setCategoryInput("");
