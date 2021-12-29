@@ -19,6 +19,16 @@ export const todosReducer = (state = initialState, { type, payload }) => {
       return { ...state, ...payload };
     case "TODOS_DELETE_ALL":
       return initialState;
+
+    case "TODOS_CHECK_ALL":
+      return {
+        ...state,
+        todos: state.todos.map((todo) =>
+          todo.isCompleted
+            ? { ...todo }
+            : { ...todo, isCompleted: !todo.isCompleted }
+        ),
+      };
     case "TODOS_CHECK_TODO":
       return {
         ...state,

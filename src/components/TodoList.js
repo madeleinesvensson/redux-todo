@@ -35,17 +35,26 @@ const TodoList = ({
       ) : (
         <Box
           sx={{
-            color: ["primary", "green", "purple"],
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           {filteredTodos.map((todo, index) => (
-            <Box key={todo.id}>
+            <Box
+              key={todo.id}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <CheckTodo id={todo.id} complete={todo.isCompleted} />
               <div>
-                <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
-                <p>{todo.category}</p>
+                <div>
+                  <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
+                  <p>{todo.category}</p>
+                </div>
+                <p key={todo + index}>{todo.title}</p>
               </div>
-              <p key={todo + index}>{todo.title}</p>
               <DeleteTodo id={todo.id} />
             </Box>
           ))}

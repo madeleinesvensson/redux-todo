@@ -1,6 +1,6 @@
-import { deleteAllTodos } from "actions/todo.actions";
+import { checkAllTodos, deleteAllTodos } from "actions/todo.actions";
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button } from "theme-ui";
 
 export const SubmitButton = () => {
@@ -26,8 +26,13 @@ export const DeleteAllButton = () => {
 };
 
 export const CheckAllButton = () => {
+  const dispatch = useDispatch();
   return (
-    <Button type="button" variant="primary">
+    <Button
+      type="button"
+      variant="primary"
+      onClick={() => dispatch(checkAllTodos())}
+    >
       Complete all
     </Button>
   );

@@ -33,6 +33,17 @@ const theme = {
         color: "white",
       },
     },
+    underlined: {
+      border: "none",
+      bg: "white",
+      color: "black",
+
+      margin: "10px",
+      borderRadius: "0px",
+      "&:active": {
+        borderBottom: "1px solid black",
+      },
+    },
   },
   forms: {
     input: {
@@ -43,6 +54,7 @@ const theme = {
     },
     select: {
       borderColor: "gray",
+      margin: "2",
       "&:focus": {
         borderColor: "primary",
         boxShadow: (t) => `0 0 0 2px ${t.colors.primary}`,

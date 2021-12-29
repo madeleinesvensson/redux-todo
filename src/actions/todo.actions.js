@@ -25,3 +25,8 @@ export const checkTodo = (id) => {
     dispatch({ type: "TODOS_CHECK_TODO", payload: id });
   };
 };
+export const checkAllTodos = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "TODOS_CHECK_ALL", payload: id });
+  };
+};
