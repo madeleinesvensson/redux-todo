@@ -1,24 +1,25 @@
+import { CheckAllButton } from "components/Buttons";
+import { DeleteAllButton } from "components/Buttons";
 import Form from "components/Form";
 import TodoList from "components/TodoList";
-import React from "react";
-import { connect } from "react-redux";
-import { getTodos } from "reducers/todo.reducer";
+import React, { useState } from "react";
 import { ThemeProvider } from "theme-ui";
 import theme from "./themes/theme";
+import Header from "components/Header";
+import Navigation from "components/Navigation";
 
-const App = ({ todos }) => {
-  console.log(todos);
+const App = () => {
+  const [todoFilter, setTodoFilter] = useState("ALL");
+
   return (
     <ThemeProvider theme={theme}>
-      <h1 sx={{ color: "primary", fontFamily: "heading" }}>Hello</h1>
+      <Header />
       <Form />
-      <TodoList />
+      <Navigation setTodoFilter={setTodoFilter} />
+      <TodoList todoFilter={todoFilter} />
+      <DeleteAllButton />
+      <CheckAllButton />
     </ThemeProvider>
   );
 };
-export default connect(
-  (state) => ({
-    todos: getTodos(state),
-  }),
-  null
-)(App);
+export default App;

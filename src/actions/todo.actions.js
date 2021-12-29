@@ -14,9 +14,12 @@ export const editTodo = (todo) => ({
   payload: todo,
 });
 
-export const deleteAllTodos = () => ({
-  type: "TODOS_DELETE_ALL",
-});
+export const deleteAllTodos = (id) => {
+  return async (dispatch) => {
+    dispatch({ type: "TODOS_DELETE_ALL", payload: id });
+  };
+};
+
 export const checkTodo = (id) => {
   return async (dispatch) => {
     dispatch({ type: "TODOS_CHECK_TODO", payload: id });

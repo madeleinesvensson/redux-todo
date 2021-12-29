@@ -1,9 +1,8 @@
 import React from "react";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { checkTodo } from "actions/todo.actions";
 
 const CheckTodo = ({ id, checkTodo, complete }) => {
-  const dispatch = useDispatch();
   return (
     <div>
       <input

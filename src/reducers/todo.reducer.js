@@ -36,3 +36,5 @@ export const todosReducer = (state = initialState, { type, payload }) => {
 export const getTodos = (state) => state.todosReducer.todos;
 export const getCompletedTodos = (state) =>
   state.todosReducer.todos.filter((todo) => todo.isCompleted);
+export const getUncompleteTodos = (state) =>
+  state.todosReducer.todos.filter((todo) => todo.isCompleted === false);

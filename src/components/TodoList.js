@@ -1,29 +1,55 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { connect } from "react-redux";
-import { getTodos } from "reducers/todo.reducer";
+import {
+  getCompletedTodos,
+  getTodos,
+  getUncompleteTodos,
+} from "reducers/todo.reducer";
 import CheckTodo from "./CheckTodo";
 import DeleteTodo from "./DeleteTodo";
-import dayjs from "dayjs";
+import { Box } from "theme-ui";
 
-const TodoList = ({ todos, hasNoTodos }) => {
-  console.log(todos);
+const TodoList = ({
+  todos,
+  completedTodos,
+  uncompletedTodos,
+  todoFilter,
+  hasNoTodos,
+}) => {
+  const filteredTodos = useMemo(() => {
+    switch (todoFilter) {
+      case "COMPLETED":
+        return completedTodos;
+      case "UNCOMPLETED":
+        return uncompletedTodos;
+      case "ALL":
+      default:
+        return todos;
+    }
+  }, [todoFilter, todos]);
 
   return (
     <div>
       {hasNoTodos ? (
         <h1>No todos</h1>
       ) : (
-        <div>
-          {todos.map((todo, index) => (
-            <div key={todo.id}>
-              <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
-              <p>{todo.category}</p>
+        <Box
+          sx={{
+            color: ["primary", "green", "purple"],
+          }}
+        >
+          {filteredTodos.map((todo, index) => (
+            <Box key={todo.id}>
+              <CheckTodo id={todo.id} complete={todo.isCompleted} />
+              <div>
+                <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
+                <p>{todo.category}</p>
+              </div>
               <p key={todo + index}>{todo.title}</p>
               <DeleteTodo id={todo.id} />
-              <CheckTodo id={todo.id} complete={todo.isCompleted} />
-            </div>
+            </Box>
           ))}
-        </div>
+        </Box>
       )}
     </div>
   );
@@ -31,6 +57,8 @@ const TodoList = ({ todos, hasNoTodos }) => {
 export default connect(
   (state) => ({
     todos: getTodos(state),
+    completedTodos: getCompletedTodos(state),
+    uncompletedTodos: getUncompleteTodos(state),
     hasNoTodos: getTodos(state).length === 0,
   }),
   null
