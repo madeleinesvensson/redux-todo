@@ -7,6 +7,8 @@ import { ThemeProvider } from "theme-ui";
 import theme from "./themes/theme";
 import Header from "components/Header";
 import Navigation from "components/Navigation";
+import { DeleteCheckAllButton } from "components/DeleteCheckAllButton";
+import { Footer } from "components/Footer";
 
 const App = () => {
   const [todoFilter, setTodoFilter] = useState("ALL");
@@ -17,8 +19,8 @@ const App = () => {
       <Form />
       <Navigation setTodoFilter={setTodoFilter} />
       <TodoList todoFilter={todoFilter} />
-      <DeleteAllButton />
-      <CheckAllButton />
+      <DeleteCheckAllButton />
+      <Footer />
     </ThemeProvider>
   );
 };

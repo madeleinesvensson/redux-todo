@@ -1,16 +1,43 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getCompletedTodos, getTodos } from "reducers/todo.reducer";
+import { Box, Heading, Paragraph } from "theme-ui";
 
 const Header = ({ todos, completedTodos }) => {
   return (
-    <>
-      <h1>TASK</h1>
-      <h1>Manager</h1>
-      <p>
+    <Box
+      sx={{
+        height: "150px",
+        padding: "20px",
+        display: "flex",
+        justifyContent: "space-between",
+        bg: "bg",
+      }}
+    >
+      <div>
+        <Heading
+          sx={{ fontFamily: "Roboto", color: "primary", fontSize: "3em" }}
+        >
+          TASK
+        </Heading>
+        <Heading
+          sx={{
+            fontFamily: "Shadows Into Light",
+            color: "secondary",
+            fontSize: "2em",
+            justifyContent: "flex-end",
+            display: "flex",
+          }}
+        >
+          Manager
+        </Heading>
+      </div>
+      <Paragraph
+        sx={{ alignItems: "flex-end", display: "flex", fontFamily: "Roboto" }}
+      >
         {completedTodos.length} / {todos.length} tasks completed
-      </p>
-    </>
+      </Paragraph>
+    </Box>
   );
 };
 

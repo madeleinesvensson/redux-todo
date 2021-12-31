@@ -15,6 +15,7 @@ const TodoList = ({
   uncompletedTodos,
   todoFilter,
   hasNoTodos,
+  categoryInput,
 }) => {
   const filteredTodos = useMemo(() => {
     switch (todoFilter) {
@@ -28,6 +29,24 @@ const TodoList = ({
     }
   }, [todoFilter, todos]);
 
+  const borderColorSwitcher = (category) => {
+    switch (category) {
+      case "Important":
+        return "red";
+      case "School":
+        return "blue";
+      case "Home":
+        return "pink";
+      case "Work":
+        return "brown";
+      case "Pay":
+        return "green";
+      case "Buy":
+        return "yellow";
+      default:
+        return "black";
+    }
+  };
   return (
     <div>
       {hasNoTodos ? (
@@ -46,21 +65,33 @@ const TodoList = ({
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                border: "1px solid black",
+                border: `3px solid ${borderColorSwitcher(todo.category)}`,
+                borderRadius: "10px",
                 margin: "10px",
                 padding: "10px",
+                height: "100px",
+                boxShadow: `1px 1px 3px ${borderColorSwitcher(todo.category)}`,
               }}
             >
               <CheckTodo id={todo.id} complete={todo.isCompleted} />
-              <div>
-                <div>
-                  <Paragraph sx={{}}>
+              <Box sx={{ width: "70%" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "flex-start",
+                    marginBottom: "10px",
+                  }}
+                >
+                  <Paragraph sx={{ paddingRight: "20px" }}>
                     {todo.time.format("ddd DD MMM, HH:mm")}
                   </Paragraph>
-                  <p>{todo.category}</p>
-                </div>
-                <p key={todo + index}>{todo.title}</p>
-              </div>
+                  <Paragraph sx={{ textTransform: "uppercase" }}>
+                    {todo.category}
+                  </Paragraph>
+                </Box>
+                <Paragraph key={todo + index}>{todo.title}</Paragraph>
+              </Box>
               <DeleteTodo id={todo.id} />
             </Box>
           ))}

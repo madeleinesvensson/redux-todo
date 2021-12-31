@@ -1,22 +1,27 @@
 const theme = {
   breakpoints: ["480px", "768px", "1024px"],
   fontFamily: {
-    body: "system-ui, sans-serif",
-    heading: '"Avenir Next", sans-serif',
-    monospace: "Menlo, monospace",
+    body: '"Roboto", sans-serif',
+    heading: '"Roboto", sans-serif',
+    monospace: "'Shadows Into Light', cursive",
   },
   colors: {
     text: "#000",
     bg: "#DAB785",
     primary: "#084C61",
     secondary: "#6C464F",
+    third: "#D0A3BF",
+    fourth: "#005E7C",
   },
   buttons: {
     primary: {
       fontWeight: "200",
       color: "#084C61",
+      fontSize: "1.2em",
       border: "2px solid #084C61",
       borderRadius: "35px",
+      height: "50px",
+      width: "150px",
       bg: "white",
       "&:hover": {
         bg: "#084C61",
@@ -25,10 +30,11 @@ const theme = {
     },
     add: {
       fontWeight: "200",
-      fontSize: "40px",
+      fontSize: "3em",
       borderRadius: "50%",
-      lineHeight: "70px",
-      width: "85px",
+      lineHeight: "50px",
+      height: "50px",
+      width: "50px",
       color: "#DAB785",
       border: "2px solid #DAB785",
       textAlign: "center",
@@ -40,17 +46,7 @@ const theme = {
         color: "white",
       },
     },
-    underlined: {
-      border: "none",
-      bg: "white",
-      color: "black",
 
-      margin: "10px",
-      borderRadius: "0px",
-      "&:active": {
-        borderBottom: "1px solid black",
-      },
-    },
     delete: {
       bg: "transparent",
       padding: "0px",
@@ -66,7 +62,7 @@ const theme = {
     },
     select: {
       borderColor: "#084C61",
-      margin: "2",
+      margin: "10px 0",
       "&:focus": {
         borderColor: "primary",
         boxShadow: (t) => `0 0 0 2px ${t.colors.primary}`,

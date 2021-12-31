@@ -1,19 +1,50 @@
 import React from "react";
 
-import { Box, Button } from "theme-ui";
+import { Box, Paragraph } from "theme-ui";
 
 const Navigation = ({ setTodoFilter }) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
-      <Button variant="underlined" onClick={() => setTodoFilter("UNCOMPLETED")}>
+      <Paragraph
+        sx={{
+          color: "black",
+          margin: "10px",
+          "&:active": {
+            borderBottom: "1px solid black",
+          },
+        }}
+        variant="underlined"
+        onClick={() => setTodoFilter("UNCOMPLETED")}
+      >
         Todo
-      </Button>
-      <Button variant="underlined" onClick={() => setTodoFilter("COMPLETED")}>
+      </Paragraph>
+      <Paragraph
+        sx={{
+          color: "black",
+          margin: "10px",
+
+          "&:active": {
+            borderBottom: "1px solid black",
+          },
+        }}
+        variant="underlined"
+        onClick={() => setTodoFilter("COMPLETED")}
+      >
         Completed
-      </Button>
-      <Button variant="underlined" onClick={() => setTodoFilter("ALL")}>
+      </Paragraph>
+      <Paragraph
+        sx={{
+          color: "black",
+          margin: "10px",
+          "&:active": {
+            borderBottom: "1px solid black",
+          },
+        }}
+        variant="underlined"
+        onClick={() => setTodoFilter("ALL")}
+      >
         All
-      </Button>
+      </Paragraph>
     </Box>
   );
 };

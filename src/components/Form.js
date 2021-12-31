@@ -20,7 +20,10 @@ const Form = ({ addTodo }) => {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
+        margin: "20px",
         padding: "20px",
+        alignItems: "center",
+        borderRadius: "10px",
       }}
       as="form"
       onSubmit={(event) => {
@@ -35,11 +38,18 @@ const Form = ({ addTodo }) => {
         event.preventDefault();
       }}
     >
-      <Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-start",
+          flexDirection: "column",
+        }}
+      >
         <Input
           type="text"
           value={input}
           onChange={(event) => setInput(event.target.value)}
+          placeholder="Add a thing todo"
         />
 
         <Select
