@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Button } from "theme-ui";
+import { Box, Button } from "theme-ui";
 
 const Navigation = ({ setTodoFilter }) => {
   return (
-    <>
+    <Box sx={{ display: "flex", justifyContent: "center" }}>
       <Button variant="underlined" onClick={() => setTodoFilter("UNCOMPLETED")}>
         Todo
       </Button>
@@ -14,7 +14,7 @@ const Navigation = ({ setTodoFilter }) => {
       <Button variant="underlined" onClick={() => setTodoFilter("ALL")}>
         All
       </Button>
-    </>
+    </Box>
   );
 };
 

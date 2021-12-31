@@ -5,8 +5,8 @@ import { Button } from "theme-ui";
 
 export const SubmitButton = () => {
   return (
-    <Button type="submit" variant="secondary">
-      +
+    <Button type="submit" variant="add">
+      <span>+</span>
     </Button>
   );
 };

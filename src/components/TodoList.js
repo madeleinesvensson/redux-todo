@@ -7,7 +7,7 @@ import {
 } from "reducers/todo.reducer";
 import CheckTodo from "./CheckTodo";
 import DeleteTodo from "./DeleteTodo";
-import { Box } from "theme-ui";
+import { Box, Paragraph } from "theme-ui";
 
 const TodoList = ({
   todos,
@@ -45,12 +45,18 @@ const TodoList = ({
               sx={{
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "space-between",
+                border: "1px solid black",
+                margin: "10px",
+                padding: "10px",
               }}
             >
               <CheckTodo id={todo.id} complete={todo.isCompleted} />
               <div>
                 <div>
-                  <p>{todo.time.format("ddd DD MMM, HH:mm")}</p>
+                  <Paragraph sx={{}}>
+                    {todo.time.format("ddd DD MMM, HH:mm")}
+                  </Paragraph>
                   <p>{todo.category}</p>
                 </div>
                 <p key={todo + index}>{todo.title}</p>

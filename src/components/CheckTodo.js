@@ -1,19 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { checkTodo } from "actions/todo.actions";
+import { Checkbox, Label } from "theme-ui";
 
 const CheckTodo = ({ id, checkTodo, complete }) => {
   return (
-    <div>
-      <input
+    <Label>
+      <Checkbox
         key={id}
-        type="checkbox"
         checked={complete}
         onChange={() => {
           checkTodo(id);
         }}
       />
-    </div>
+    </Label>
   );
 };
 

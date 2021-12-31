@@ -14,47 +14,49 @@ const Form = ({ addTodo }) => {
     event.preventDefault();
   };
   return (
-    <Flex
-      p={3}
-      bg="secondary"
-      sx={{ flex: "1 1 auto", justifyContent: "center" }}
+    <Box
+      bg="primary"
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+        padding: "20px",
+      }}
+      as="form"
+      onSubmit={(event) => {
+        addTodo({
+          title: input,
+          isCompleted: false,
+          category: categoryInput,
+          time: dayjs(),
+        });
+        setInput("");
+        setCategoryInput("");
+        event.preventDefault();
+      }}
     >
-      <form
-        onSubmit={(event) => {
-          addTodo({
-            title: input,
-            isCompleted: false,
-            category: categoryInput,
-            time: dayjs(),
-          });
-          setInput("");
-          setCategoryInput("");
-          event.preventDefault();
-        }}
-      >
-        <Box>
-          <Input
-            type="text"
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
+      <Box>
+        <Input
+          type="text"
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        />
 
-          <Select
-            value={categoryInput}
-            onChange={(event) => setCategoryInput(event.target.value)}
-          >
-            <option hidden>Category</option>
-            <option value="Important">Important</option>
-            <option value="School">School</option>
-            <option value="Home">Home</option>
-            <option value="Work">Work</option>
-            <option value="Buy">Buy</option>
-            <option value="Pay">Pay</option>
-          </Select>
-        </Box>
-        <SubmitButton onClick={() => handleSubmit()} />
-      </form>
-    </Flex>
+        <Select
+          value={categoryInput}
+          onChange={(event) => setCategoryInput(event.target.value)}
+        >
+          <option hidden>Category</option>
+          <option value="Important">Important</option>
+          <option value="School">School</option>
+          <option value="Home">Home</option>
+          <option value="Work">Work</option>
+          <option value="Buy">Buy</option>
+          <option value="Pay">Pay</option>
+        </Select>
+      </Box>
+      <SubmitButton onClick={() => handleSubmit()} />
+    </Box>
   );
 };
 
