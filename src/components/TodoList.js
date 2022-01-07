@@ -15,7 +15,6 @@ const TodoList = ({
   uncompletedTodos,
   todoFilter,
   hasNoTodos,
-  categoryInput,
 }) => {
   const filteredTodos = useMemo(() => {
     switch (todoFilter) {
@@ -32,23 +31,23 @@ const TodoList = ({
   const borderColorSwitcher = (category) => {
     switch (category) {
       case "Important":
-        return "red";
+        return "#EF6461";
       case "School":
-        return "blue";
+        return "#F4D35E";
       case "Home":
-        return "pink";
+        return "#C89F9C";
       case "Work":
-        return "brown";
+        return "#70C1B3";
       case "Pay":
-        return "green";
+        return "#A799B7";
       case "Buy":
-        return "yellow";
+        return "#005E7C";
       default:
         return "black";
     }
   };
   return (
-    <div>
+    <>
       {hasNoTodos ? (
         <h1>No todos</h1>
       ) : (
@@ -56,6 +55,7 @@ const TodoList = ({
           sx={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
           }}
         >
           {filteredTodos.map((todo, index) => (
@@ -68,36 +68,67 @@ const TodoList = ({
                 border: `3px solid ${borderColorSwitcher(todo.category)}`,
                 borderRadius: "10px",
                 margin: "10px",
-                padding: "10px",
+                padding: "10px 30px",
                 height: "100px",
                 boxShadow: `1px 1px 3px ${borderColorSwitcher(todo.category)}`,
+                maxWidth: "500px",
               }}
             >
-              <CheckTodo id={todo.id} complete={todo.isCompleted} />
-              <Box sx={{ width: "70%" }}>
+              <Box
+                sx={{ width: "100%", display: "flex", flexDirection: "column" }}
+              >
                 <Box
                   sx={{
                     display: "flex",
                     flexDirection: "row",
-                    alignItems: "flex-start",
+                    alignItems: "center",
                     marginBottom: "10px",
                   }}
                 >
-                  <Paragraph sx={{ paddingRight: "20px" }}>
+                  <Paragraph
+                    sx={{ paddingRight: "20px", fontFamily: "Roboto" }}
+                  >
                     {todo.time.format("ddd DD MMM, HH:mm")}
                   </Paragraph>
-                  <Paragraph sx={{ textTransform: "uppercase" }}>
+                  <Paragraph
+                    sx={{
+                      textTransform: "uppercase",
+                      fontFamily: "Shadows Into Light",
+                    }}
+                  >
                     {todo.category}
                   </Paragraph>
                 </Box>
-                <Paragraph key={todo + index}>{todo.title}</Paragraph>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <CheckTodo id={todo.id} complete={todo.isCompleted} />
+                  <Paragraph
+                    key={todo + index}
+                    sx={{
+                      fontFamily: "Roboto",
+                      fontSize: "20px",
+                      textDecoration: todo.isCompleted
+                        ? "line-through"
+                        : "none",
+                      color: todo.isCompleted ? "gray" : "black",
+                    }}
+                  >
+                    {todo.title}
+                  </Paragraph>
+                  <DeleteTodo id={todo.id} sx={{ alignSelf: "flex-end" }} />
+                </Box>
               </Box>
-              <DeleteTodo id={todo.id} />
             </Box>
           ))}
         </Box>
       )}
-    </div>
+    </>
   );
 };
 export default connect(

@@ -8,7 +8,7 @@ const Header = ({ todos, completedTodos }) => {
     <Box
       sx={{
         height: "150px",
-        padding: "20px",
+        padding: "20px 50px",
         display: "flex",
         justifyContent: "space-between",
         bg: "bg",

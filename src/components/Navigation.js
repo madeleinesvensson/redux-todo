@@ -1,50 +1,49 @@
 import React from "react";
 
-import { Box, Paragraph } from "theme-ui";
+import { Box, NavLink } from "theme-ui";
 
 const Navigation = ({ setTodoFilter }) => {
   return (
     <Box sx={{ display: "flex", justifyContent: "center" }}>
-      <Paragraph
+      <NavLink
+        href="#!"
         sx={{
           color: "black",
+          fontFamily: "Roboto",
           margin: "10px",
-          "&:active": {
-            borderBottom: "1px solid black",
-          },
+          fontSize: "20px",
+          fontWeight: "500",
         }}
-        variant="underlined"
         onClick={() => setTodoFilter("UNCOMPLETED")}
       >
         Todo
-      </Paragraph>
-      <Paragraph
+      </NavLink>
+      <NavLink
+        href="#!"
         sx={{
           color: "black",
           margin: "10px",
-
-          "&:active": {
-            borderBottom: "1px solid black",
-          },
+          fontFamily: "Roboto",
+          fontSize: "20px",
+          fontWeight: "500",
         }}
-        variant="underlined"
         onClick={() => setTodoFilter("COMPLETED")}
       >
         Completed
-      </Paragraph>
-      <Paragraph
+      </NavLink>
+      <NavLink
+        href="#!"
         sx={{
           color: "black",
           margin: "10px",
-          "&:active": {
-            borderBottom: "1px solid black",
-          },
+          fontFamily: "Roboto",
+          fontSize: "20px",
+          fontWeight: "500",
         }}
-        variant="underlined"
         onClick={() => setTodoFilter("ALL")}
       >
         All
-      </Paragraph>
+      </NavLink>
     </Box>
   );
 };

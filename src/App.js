@@ -3,7 +3,7 @@ import { DeleteAllButton } from "components/Buttons";
 import Form from "components/Form";
 import TodoList from "components/TodoList";
 import React, { useState } from "react";
-import { ThemeProvider } from "theme-ui";
+import { Flex, ThemeProvider } from "theme-ui";
 import theme from "./themes/theme";
 import Header from "components/Header";
 import Navigation from "components/Navigation";
@@ -15,12 +15,18 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <Form />
-      <Navigation setTodoFilter={setTodoFilter} />
-      <TodoList todoFilter={todoFilter} />
-      <DeleteCheckAllButton />
-      <Footer />
+      <Flex
+        sx={{ flexDirection: "column", height: "100%", overflow: "hidden" }}
+      >
+        <Header />
+        <Flex sx={{ flexDirection: "column", flexGrow: 1, overflow: "auto" }}>
+          <Form />
+          <Navigation setTodoFilter={setTodoFilter} />
+          <TodoList todoFilter={todoFilter} />
+        </Flex>
+        <DeleteCheckAllButton />
+        <Footer />
+      </Flex>
     </ThemeProvider>
   );
 };
