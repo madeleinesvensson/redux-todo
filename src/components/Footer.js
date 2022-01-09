@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Paragraph } from "theme-ui";
+import { Box, Paragraph, Link } from "theme-ui";
 
 export const Footer = () => {
   return (
@@ -17,15 +17,19 @@ export const Footer = () => {
         >
           Made by:
         </Paragraph>
-        <Paragraph
+        <Link
+          href="https://github.com/madeleinesvensson"
+          rel="noopener noreferrer"
+          target="_blank"
           sx={{
             fontFamily: "Shadows Into Light",
             color: "white",
             fontSize: "1.2em",
+            textDecoration: "none",
           }}
         >
           Madeleine Svensson
-        </Paragraph>
+        </Link>
       </Box>
     </>
   );

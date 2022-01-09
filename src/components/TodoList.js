@@ -49,15 +49,11 @@ const TodoList = ({
   return (
     <>
       {hasNoTodos ? (
-        <h1>No todos</h1>
+        <Box sx={{ textAlign: "center" }}>
+          <h1>No todos</h1>
+        </Box>
       ) : (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
+        <Box>
           {filteredTodos.map((todo, index) => (
             <Box
               key={todo.id}

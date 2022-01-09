@@ -19,7 +19,14 @@ const App = () => {
         sx={{ flexDirection: "column", height: "100%", overflow: "hidden" }}
       >
         <Header />
-        <Flex sx={{ flexDirection: "column", flexGrow: 1, overflow: "auto" }}>
+        <Flex
+          sx={{
+            flexDirection: "column",
+            flexGrow: 1,
+
+            overflow: "auto",
+          }}
+        >
           <Form />
           <Navigation setTodoFilter={setTodoFilter} />
           <TodoList todoFilter={todoFilter} />
